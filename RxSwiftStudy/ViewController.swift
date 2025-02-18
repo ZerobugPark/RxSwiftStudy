@@ -51,6 +51,7 @@ final class ViewController: UIViewController {
     
     private func bind() {
         
+        // bind(to:) 옵저버에 새로운 옵저버블을 추가할 때 사용하는 듯
         items
             .bind(to: tableView.rx.items(cellIdentifier: TableViewCell.id, cellType: TableViewCell.self)) { (row, element, cell) in
                 
@@ -58,7 +59,29 @@ final class ViewController: UIViewController {
                 
             }.disposed(by: disposeBag)
         
+        
+        tableView.rx.itemSelected.bind(with: self) { owner, indexPath in
+            
+            if indexPath.item == 0 {
+                let vc = SimpleTableExampleViewController()
+                owner.navigationController?.pushViewController(vc, animated: true)
+            } else if indexPath.item == 1 {
+                let vc = NumbersViewController()
+                owner.navigationController?.pushViewController(vc, animated: true)
+            } else if indexPath.item == 2 {
+                let vc = SimpleValidationViewController()
+                owner.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = BirthDayViewController()
+                owner.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+            
+        }
+        .disposed(by: disposeBag)
+        
     }
+   
 
 
 }
