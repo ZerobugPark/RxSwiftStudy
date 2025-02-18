@@ -73,10 +73,10 @@ final class NumbersViewController: UIViewController {
         firstTextField.textAlignment = .right
         firstTextField.layer.borderWidth = 5
         secondTextField.borderStyle = .roundedRect
-        firstTextField.textAlignment = .right
+        secondTextField.textAlignment = .right
         secondTextField.layer.borderWidth = 5
         thirdTextField.borderStyle = .roundedRect
-        firstTextField.textAlignment = .right
+        thirdTextField.textAlignment = .right
         thirdTextField.layer.borderWidth = 5
 
         
